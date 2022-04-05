@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableJpaRepositories(basePackages = {"com.skillsoft.springdatajpa.repository"})
 public class JpaAppConfiguration {
     @Bean
     public DataSource dataSource() {
@@ -29,7 +30,7 @@ public class JpaAppConfiguration {
         vendorAdapter.setGenerateDdl(true);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.skillsoft.springdatajpa");
+        factory.setPackagesToScan("com.skillsoft.springdatajpa.entity");
         factory.setDataSource(dataSource());
         return factory;
     }
